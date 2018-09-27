@@ -10,6 +10,7 @@
 #import "GLAppMessageAlter.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *lable1;
 
 @end
 
@@ -30,11 +31,12 @@
 - (void)clcik{
     
     GLAppMessageAlter * alter = [[GLAppMessageAlter alloc] init];
-    alter.showSureBtn = YES;
+    alter.showSureBtn = NO;
     [alter alterWithTitle:@"更新提示" contentArray:@[@"1.修复了收件箱闪退问题",@"2.增加新功能",@"3.这个app是关于收发短信的便捷app，所以你们好好用",@"4.这个app是关于收发短信的便捷app，所以你们好好用"] cancel:@"取消" sure:@"去更新" cancelBtnClick:^{
         NSLog(@"取消");
+        self.lable1.text = @"点击了取消按钮";
     } sureBtnClick:^{
-        NSLog(@"去更新");
+        self.lable1.text = @"点击了确认按钮按钮";
     }];
     
     [alter show];
